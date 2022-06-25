@@ -1,0 +1,22 @@
+/etc/
+/session/
+/spotify/
+/Code - OSS/
+/gtk-2.0/
+/gtk-3.0/
+/kde.org/
+/htop/
+/dconf/
+/nextjs-nodejs/
+
+baloofileinformationrc
+dolphinrc
+kconf_updaterc
+kdeglobals
+kiorc
+kritadisplayrc
+kritarc
+kservicemenurc
+ktrashrc
+pavucontrol.ini
+trashrc
