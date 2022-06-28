@@ -14,7 +14,6 @@ Plug 'akinsho/bufferline.nvim', {'tag': 'v2.*'}
 Plug 'folke/todo-comments.nvim'			" TODO marking and searching
 Plug 'kyazdani42/nvim-web-devicons'     " Colored file icons
 Plug 'bryanmylee/vim-colorscheme-icons' " Matches icons to colorscheme
-" Plug 'mhinz/vim-signify'				" Git signs in the gutter
 Plug 'lewis6991/gitsigns.nvim'			" Git signs in the gutter
 
 
@@ -36,7 +35,6 @@ Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'nvim-lua/plenary.nvim'			" No idea but it makes things work
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-telescope/telescope.nvim'	" Fuzzy word and file finder
-Plug 'preservim/nerdtree'				" File explorer
 Plug 'kyazdani42/nvim-tree.lua'			" File explorer
 Plug 'Xuyuanp/nerdtree-git-plugin'		" Git signs in file explorer
 Plug 'CRAG666/code_runner.nvim'			" Run code without leaving vim
@@ -71,11 +69,11 @@ syntax on
 set number relativenumber
 set tabstop=4 shiftwidth=4
 set autoindent smartindent cindent indentexpr noexpandtab
-filetype plugin indent on
 set incsearch ignorecase smartcase hlsearch
 set wildmode=longest,list,full wildmenu
 set ruler
-set list
+set cursorline
+set list listchars=trail:»,tab:»-
 set wrap breakindent
 set encoding=utf-8
 set textwidth=0
@@ -88,6 +86,7 @@ set backup
 set scrolloff=4
 set updatetime=300
 highlight Comment gui=italic cterm=italic
+
 
 """ Filetype-specific Configurations
 
