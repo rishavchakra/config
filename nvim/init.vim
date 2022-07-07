@@ -6,6 +6,7 @@ call plug#begin()
 
 """ Aesthetics
 Plug 'chriskempson/base16-vim'			" Base16 theme set
+Plug 'sainnhe/everforest'				" Everforest theme
 Plug 'morhetz/gruvbox'					" Official gruvbox theme
 Plug 'sainnhe/gruvbox-material'			" Alternate gruvbox theme
 Plug 'sonph/onehalf', {'rtp': 'vim'}	" OneHalf Dark theme
@@ -61,7 +62,7 @@ call plug#end()
 """"""""""""""""""""""""""""""""
 
 
-color gruvbox
+color everforest
 set termguicolors
 
 filetype plugin indent on
@@ -178,7 +179,7 @@ code_run.setup {
 	}
 
 lualine.setup {
-    options = { theme = 'gruvbox' },
+    options = { theme = 'everforest' },
     sections = {
         lualine_c = {
             { gps.get_location, condition = gps.is_available },
@@ -274,8 +275,8 @@ nmap <silent> <leader>nh :noh<CR>
 
 nmap <silent> <leader>git :LazyGit<CR>
 nmap <silent> <leader>e :NvimTreeToggle<CR>
-nmap <silent> <Tab> :bnext<CR>
-nmap <silent> <S-Tab> :bprevious<CR>
+nmap <silent> <Tab> :BufferLineCycleNext<CR>
+nmap <silent> <S-Tab> :BufferLineCyclePrev<CR>
 
 
 """ LSP key mappings
