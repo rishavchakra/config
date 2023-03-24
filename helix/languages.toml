@@ -1,0 +1,17 @@
+[[language]]
+name="rust"
+file-types=["rs"]
+indent={ tab-width=4, unit=" " }
+auto-format=true
+
+[[language]]
+name="typescript"
+file-types=["ts", "tsx"]
+indent={ tab-width=2, unit=" " }
+auto-format=true
+
+[[language]]
+name="javascript"
+file-types=["js", "jsx"]
+indent={ tab-width=2, unit=" " }
+auto-format=true

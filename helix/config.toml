@@ -1,0 +1,49 @@
+theme="kanagawa_fix"
+
+[editor]
+line-number = "relative"
+mouse = true
+cursorline = true
+color-modes = true
+bufferline = "multiple"
+gutters = ["diff", "spacer", "line-numbers", "spacer", "diagnostics"]
+
+[editor.cursor-shape]
+insert="underline"
+normal="block"
+select="underline"
+
+[editor.statusline]
+left=["mode","spinner","diagnostics"]
+center=["file-name"]
+right=["selections","position","separator","file-encoding","file-type"]
+
+[editor.statusline.mode]
+normal="NORMAL"
+insert="INSERT"
+select="SELECT"
+
+[editor.indent-guides]
+render=true
+
+[editor.lsp]
+display-messages = true
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[keys.normal]
+"space" = { s = ":w", q = {"ret" = ":x"}}
+"ret" = ["move_line_down", "goto_first_nonwhitespace"]
+X = "extend_line_above"
+D = "delete_char_backward"
+c = ["trim_selections", "change_selection"]
+"tab" = ":bn"
+"S-tab" = ":bp"
+"+" = "increment"
+"minus" = "decrement"
+"." = "repeat_last_motion"
+
+[keys.insert]

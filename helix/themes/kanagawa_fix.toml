@@ -1,0 +1,9 @@
+inherits = "kanagawa"
+
+"ui.cursor" = { fg = "waveBlue1", bg = "oldWhite" }
+"ui.cursor.primary" = { fg = "waveBlue1", bg = "oldWhite" }
+
+"ui.linenr.selected" = { fg = "roninYellow" }
+"ui.cursorline.primary" = { bg = "sumiInk3"}
+
+"ui.popup" = { fg = "oldWhite", bg = "sumiInk0" }

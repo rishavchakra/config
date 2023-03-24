@@ -1,0 +1,52 @@
+# Carbon
+
+spacing = 2
+padding = 1
+hide_ascii = false
+separator = ""
+key_color = "Blue"
+separator_color = "Cyan"
+
+[palette]
+type = "Full"
+glyph = " ■ "
+visible = true
+
+[bar]
+glyph = "■"
+symbol_open = '('
+symbol_close = ')'
+visible = true
+hide_delimiters = true
+
+[box]
+border = "rounded"
+visible = true
+
+[box.inner_margin]
+x = 1
+y = 0
+
+[keys]
+host = ""
+kernel = ""
+battery = ""
+os = ""
+de = ""
+wm = ""
+distro = ""
+terminal = ""
+shell = ""
+packages = ""
+uptime = ""
+memory = ""
+machine = ""
+local_ip = ""
+backlight = ""
+resolution = ""
+cpu_load = ""
+cpu = ""
+
+[custom_ascii]
+path = "~/.config/macchina/ascii_art"
+color = "White"
