@@ -18,6 +18,7 @@ vim.opt.backspace = 'start,eol,indent'
 vim.opt.path:append { '**' }
 vim.opt.wildignore:append { '*/node_modules/*' }
 vim.opt.showmode = false
+vim.opt.laststatus = 3
 
 -- Change back to bash if it's slow
 vim.opt.shell = 'fish'
@@ -31,3 +32,13 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+
+-- Colors
+vim.opt.cursorline = true
+vim.opt.termguicolors = true
+vim.opt.background = 'dark'
+
+-- Disable netrw (replaced with nvim-tree)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
