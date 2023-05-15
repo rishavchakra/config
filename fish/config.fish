@@ -12,8 +12,6 @@ alias neofetch 'neofetch | lolcat'
 alias tmux-go 'tmux attach -t'
 alias tmux-kill 'tmux kill-session'
 
-alias tx 'zellij'
-
 alias lg 'lazygit'
 
 set -Ux LIBRARY_PATH '/opt/homebrew/lib'
