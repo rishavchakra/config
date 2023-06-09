@@ -13,5 +13,6 @@ return {
             'neovim/nvim-lspconfig',
         },
         ft = 'rust',
+        event = 'VeryLazy',
     }
 }
