@@ -1,4 +1,3 @@
--- local tele = require('telescope.builtin')
 local prefix = 'Telescope: '
 return {
     {
@@ -22,6 +21,15 @@ return {
                     case_mode = 'smart_case',
                 },
             },
+            pickers = {
+                lsp_references = { theme = 'dropdown' },
+                lsp_document_symbols = { theme = 'dropdown' },
+                lsp_workspace_symbols = { theme = 'dropdown' },
+                lsp_definitions = { theme = 'dropdown' },
+                lsp_type_definitions = { theme = 'dropdown' },
+                lsp_implementations = { theme = 'dropdown' },
+                lsp_diagnostics = { theme = 'dropdown' },
+            },
         },
         keys = {
             { '<leader><space>', '<cmd>Telescope find_files<cr>', desc = prefix .. 'find files' },
@@ -33,8 +41,8 @@ return {
             { '<leader>ls', '<cmd>Telescope lsp_document_symbols<cr>', desc = prefix .. 'LSP doc symbols' },
             { '<leader>lS', '<cmd>Telescope lsp_workspace_symbols<cr>', desc = prefix .. 'LSP all symbols' },
             { '<leader>ld', '<cmd>Telescope lsp_definitions<cr>', desc = prefix .. 'LSP definitions' },
+            { '<leader>lD', '<cmd>Telescope lsp_type_definitions<cr>', desc = prefix .. 'LSP type definitions' },
             { '<leader>li', '<cmd>Telescope lsp_implementations<cr>', desc = prefix .. 'LSP impls' },
-            { '<leader>lt', '<cmd>Telescope lsp_diagnostics<cr>', desc = prefix .. 'LSP diagnostics' },
             { '<leader>lt', '<cmd>Telescope lsp_diagnostics<cr>', desc = prefix .. 'LSP diagnostics' },
         },
     },

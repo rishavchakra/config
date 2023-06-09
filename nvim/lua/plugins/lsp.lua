@@ -1,13 +1,4 @@
-function on_attach(func)
-    vim.api.nvim_create_autocmd('LspAttach', {
-        callback = function(args)
-            local buffer = args.buf
-            local client = vim.lsp.get_client_by_id(args.data.client_id)
-            func(client, buffer)
-        end
-    })
-end
-
+local vim = vim
 return {
     {
         'neovim/nvim-lspconfig',
@@ -69,11 +60,6 @@ return {
             }
         },
         config = function(_, opts)
-            on_attach(function(client, buffer)
-                -- keymap on_attach
-                -- formatting on_attach
-            end)
-
             vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
             local servers = opts.servers
@@ -123,7 +109,13 @@ return {
                 mlsp.setup({ ensure_installed = ensure_installed })
                 mlsp.setup_handlers({ setup })
             end
-        end
+        end,
+        keys = {
+            {'K', '<cmd>lua vim.lsp.buf.hover()<CR>'},
+            {'<leader>ln', '<cmd>lua vim.lsp.buf.rename()<CR>'},
+            {'<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>'},
+            {'<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>'},
+        },
     },
 
     {
