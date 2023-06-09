@@ -1,6 +1,6 @@
 return {
     'numToStr/FTerm.nvim',
-    cmd = { 'FTermOpen', 'FTermClose', 'BuildCargo', 'BuildNpm' },
+    cmd = { 'FTermOpen', 'FTermClose', 'Git', 'BuildCargo', 'BuildNpm' },
     opts = {
         border = 'double',
     },
@@ -9,6 +9,10 @@ return {
 
         vim.api.nvim_create_user_command('FTermOpen', require('FTerm').open, { bang = true })
         vim.api.nvim_create_user_command('FTermClose', require('FTerm').close, { bang = true })
+
+        vim.api.nvim_create_user_command('Git', function()
+            require('FTerm').scratch({ cmd = {'lazygit'} })
+        end, { bang = true })
 
         vim.api.nvim_create_user_command('BuildCargo', function()
             require('FTerm').scratch({ cmd = {'cargo', 'build', '--target', os.getenv('RUST_TARGET') } })
