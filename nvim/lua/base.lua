@@ -42,3 +42,8 @@ vim.opt.background = 'dark'
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.cmd [[highlight IndentBlanklineIndent1 guibg=#1f1f28 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent2 guibg=#16161d gui=nocombine]]
+vim.opt.list = true
+vim.opt.listchars:append 'lead:⋅'
+vim.opt.listchars:append 'trail:⋅'
