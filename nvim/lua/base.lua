@@ -1,3 +1,4 @@
+local vim = vim
 vim.cmd('autocmd!')
 
 vim.scriptencoding = 'utf-8'
@@ -47,3 +48,9 @@ vim.cmd [[highlight IndentBlanklineIndent2 guibg=#16161d gui=nocombine]]
 vim.opt.list = true
 vim.opt.listchars:append 'lead:⋅'
 vim.opt.listchars:append 'trail:⋅'
+
+-- Code folding
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+-- Disable automatic everything-folding
+vim.opt.foldlevel = 20

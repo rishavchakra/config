@@ -36,25 +36,8 @@ map.set('t', '<esc>', '<C-\\><C-n>', silence)
 -- map.set('n', '<C-d>', '<C-d>zz', silence)
 -- map.set('n', '<C-u>', '<C-u>zz', silence)
 
-vim.opt.cursorline = true
-vim.opt.termguicolors = true
-vim.opt.background = 'dark'
-
-M = {}
-
-function M.lsp_keymaps(opts)
-    local keymap = vim.api.nvim_set_keymap
-    keymap('n', '<leader>ld', '<cmd>TroubleToggle lsp_definitions<CR>', opts)
-    keymap('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    keymap('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    keymap('n', '<leader>lr', '<cmd>TroubleToggle lsp_references<CR>', opts)
-    keymap('n', '<leader>lt', '<cmd>TroubleToggle lsp_type_definitions<CR>', opts)
-    keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    keymap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-    keymap('n', '<leader>ln', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-end
-
-return M
+-- Code folding
+map.set('n', '<leader>tf', 'za', { desc = "Toggle Fold code" })
+map.set('n', '<leader>tF', 'za', { desc = "Toggle Fold code recursive" })
+map.set('n', '<leader>tR', 'zR', { desc = "Unfold all" })
+-- map.set('n', '<leader>tr', 'zr', { desc = "Unfold code" })

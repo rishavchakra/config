@@ -114,7 +114,7 @@ return {
             {'K', '<cmd>lua vim.lsp.buf.hover()<CR>'},
             {'<leader>ln', '<cmd>lua vim.lsp.buf.rename()<CR>'},
             {'<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>'},
-            {'<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>'},
+            {'<leader>lf', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>'},
         },
     },
 
