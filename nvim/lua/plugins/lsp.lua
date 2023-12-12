@@ -28,18 +28,18 @@ return {
             },
             servers = {
                 jsonls = {},
-                luals = {
-                    settings = {
-                        Lua = {
-                            workspace = {
-                                checkThirdParty = false,
-                            },
-                            completion = {
-                                callSnippet = 'Replace',
-                            },
-                        },
-                    },
-                },
+                -- luals = {
+                --     settings = {
+                --         Lua = {
+                --             workspace = {
+                --                 checkThirdParty = false,
+                --             },
+                --             completion = {
+                --                 callSnippet = 'Replace',
+                --             },
+                --         },
+                --     },
+                -- },
                 rust_analyzer = {
                     filetypes = {'rust'},
                     root_dir = require('lspconfig/util').root_pattern('Cargo.toml'),
