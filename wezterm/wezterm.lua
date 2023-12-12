@@ -7,7 +7,9 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
-config.colors = require 'kanagawa'.colors
+-- config.colors = require 'kanagawa'.colors
+-- config.color_scheme = 'Catppuccin Mocha'
+config.color_scheme = 'Kanagawa (Gogh)'
 config.font = wezterm.font_with_fallback {
     'Rec Mono Semicasual',
     'Fira Code',
