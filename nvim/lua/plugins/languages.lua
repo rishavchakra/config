@@ -14,5 +14,10 @@ return {
         },
         ft = 'rust',
         event = 'VeryLazy',
-    }
+    },
+    -- {
+    --     'ziglang/zig.vim',
+    --     ft = 'zig',
+    --     event = 'VeryLazy',
+    -- }
 }

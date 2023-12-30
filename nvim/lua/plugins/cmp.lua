@@ -10,7 +10,7 @@ return {
             'hrsh7th/cmp-cmdline',
             'hrsh7th/cmp-nvim-lsp-signature-help',
             'hrsh7th/cmp-nvim-lsp-document-symbol',
-            'Saecki/crates.nvim',
+            -- 'Saecki/crates.nvim',
             'saadparwaiz1/cmp_luasnip',
             'onsails/lspkind.nvim',
         },

@@ -43,8 +43,9 @@ vim.opt.background = 'dark'
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.cmd [[highlight IndentBlanklineIndent1 guibg=#1f1f28 gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineIndent2 guibg=#16161d gui=nocombine]]
+-- Disable zig fmt on save
+-- vim.g.zig_fmt_autosave = 0
+
 vim.opt.list = true
 vim.opt.listchars:append 'lead:⋅'
 vim.opt.listchars:append 'trail:⋅'

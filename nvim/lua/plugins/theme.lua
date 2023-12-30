@@ -27,7 +27,12 @@ return {
     {
         'catppuccin/nvim',
         name = 'catppuccin',
+        lazy = false,
+        priority = 999,
     },
     { 'sainnhe/everforest' },
     { 'ellisonleao/gruvbox.nvim' },
+    { 'navarasu/onedark.nvim' },
+    { 'ribru17/bamboo.nvim' },
+    { 'EdenEast/nightfox.nvim' },
 }

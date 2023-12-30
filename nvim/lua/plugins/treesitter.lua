@@ -10,17 +10,24 @@ return {
             'windwp/nvim-ts-autotag'
         },
         opts = {
-            highlight = { enable = true },
+            highlight = {
+                enable = true,
+                additional_vim_regex_highlighting = false
+            },
             indent = { enable = true },
             autotag = { enable = true },
             context_commentstring = { enable = true, enable_autocmd = false },
+            auto_install = true,
             ensure_installed = {
                 'c',
                 'cpp',
                 'lua',
-                'rust',
+                'markdown',
+                'markdown_inline',
                 'tsx',
                 'typescript',
+                'rust',
+                -- 'zig',
             },
             incremental_selection = {
                 enable = true,
