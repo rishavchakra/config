@@ -1,0 +1,17 @@
+gui:
+  nerdFontsVersion: "3"
+  expandFocusedSidePanel: true
+  showCommandLog: false
+  border: 'single'
+  authorColors:
+    'rishavchakra': '#957FB8'
+  theme:
+    activeBorderColor:
+      - '#DCD7BA'
+      - bold
+    inactiveBorderColor:
+      - '#727169'
+    selectedLineBgColor:
+      - default
+    selectedRangeBgColor:
+      - bold
