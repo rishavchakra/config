@@ -48,6 +48,9 @@ return {
                             cargo = {
                                 allFeatures = true,
                             },
+                            checkOnSave = {
+                                allTargets = false,
+                            }
                         },
                     },
                 },

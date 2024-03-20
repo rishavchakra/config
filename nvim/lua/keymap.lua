@@ -14,7 +14,9 @@ map.set("n", "<leader>q", ":x")
 -- Buffers
 -- map.set('n', '<Tab>', ':bn<CR>', silence)
 -- map.set('n', '<S-Tab>', ':bp<CR>', silence)
-map.set("n", "<leader>x", "<cmd>b#|bd#<cr>", silence)
+-- map.set("n", "<leader>x", "<cmd>b#|bd#<cr>", silence)
+map.set("n", "<leader>x", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", silence)
+map.set("n", "<leader>X", "<cmd>bp<bar>vsp<bar>bn<bar>bd<cr>", silence)
 
 -- Windows
 map.set("n", "<leader>w", "<C-w>")
@@ -44,3 +46,5 @@ map.set("n", "<leader>tR", "zR", { desc = "Unfold all" })
 -- System clipboard copy/paste
 map.set("n", "<leader>y", '"*y', { desc = "Copy to system clipboard" })
 map.set("n", "<leader>p", '"*p', { desc = "Paste from system clipboard" })
+
+map.set("i", "<M-space>", "", { desc = "no-op" })

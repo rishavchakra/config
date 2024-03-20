@@ -1,4 +1,5 @@
 local pre_surround = 'Surround: '
+local pre_spectre = 'Spectre: '
 
 return {
     {
@@ -45,5 +46,15 @@ return {
         opts = {
             ignore = '^$'
         },
+    },
+    {
+        'nvim-pack/nvim-spectre',
+        dependencies = 'nvim-lua/plenary.nvim',
+        event = 'VeryLazy',
+        keys = {
+            { '<leader>fr', '<cmd>lua require("spectre").toggle()<cr>', desc = pre_spectre .. 'toggle' },
+            { '<leader>fw', '<cmd>lua require("spectre").open_visual({select_word=true})<cr>', desc = pre_spectre .. 'find current word' },
+            { '<leader>fc', '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', desc = pre_spectre .. 'find current word in file' },
+        }
     },
 }

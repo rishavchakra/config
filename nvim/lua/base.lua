@@ -20,6 +20,7 @@ vim.opt.path:append { '**' }
 vim.opt.wildignore:append { '*/node_modules/*' }
 vim.opt.showmode = false
 vim.opt.laststatus = 3
+vim.opt.conceallevel = 2
 
 -- Change back to bash if it's slow
 vim.opt.shell = 'fish'
