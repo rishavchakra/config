@@ -1,5 +1,10 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    starship init fish | source
+
+    zoxide init fish | source
+
+    macchina
 end
 
 alias v 'nvim'
@@ -10,7 +15,7 @@ alias ls 'eza --icons'
 alias tmux-go 'tmux attach -t'
 alias tmux-kill 'tmux kill-session'
 
-alias lg 'lazygit'
+alias lg lazygit
 
 alias p 'pnpm'
 

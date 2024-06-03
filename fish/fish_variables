@@ -2,7 +2,7 @@
 # VERSION: 3.0
 SETUVAR --export --path CPATH:/opt/homebrew/include\x1e/usr/local/include\x1e/opt/homebrew/lib\x1e/usr/local/lib/
 SETUVAR --export EDITOR:nvim
-SETUVAR --export LG_CONFIG_FILE:/Users/rishavc/\x2econfig/lazygit/config\x2eyml
+SETUVAR --export LG_CONFIG_FILE:/home/rishavc/.config/lazygit/config.yml
 SETUVAR --export --path LIBRARY_PATH:/opt/homebrew/lib
 SETUVAR --export --path PICO_SDK_PATH:/Users/rishavc/Apps/pico\x2dsdk/
 SETUVAR --export PYENV_ROOT:/Users/rishavc/\x2epyenv
