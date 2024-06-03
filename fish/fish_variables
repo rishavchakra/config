@@ -1,7 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:nvim
-SETUVAR --export LG_CONFIG_FILE:/Users/rishavc/\x2econfig/lazygit/config\x2eyml
+SETUVAR --export LG_CONFIG_FILE:/home/rishavc/.config/lazygit/config.yml
 SETUVAR --export --path LIBRARY_PATH:/opt/homebrew/lib
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
