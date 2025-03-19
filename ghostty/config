@@ -1,0 +1,13 @@
+# theme = Everforest Dark - Hard
+theme = Kanagawa Wave
+# theme = GruvboxDark
+# theme = catppuccin-mocha
+# font-family = Rec Mono Semicasual
+font-family = Iosevka
+
+mouse-hide-while-typing = true
+fullscreen = true
+macos-icon = custom-style
+macos-icon-frame = chrome
+
+quit-after-last-window-closed = true
