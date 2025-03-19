@@ -24,7 +24,6 @@ return {
 			autoformat = true,
 			inlay_hints = { enabled = true },
 			format = {
-				formatting_options = nil,
 				timeout_ms = nil,
 			},
 			servers = {
@@ -146,10 +145,10 @@ return {
 				-- Conform will run multiple formatters sequentially
 				python = { "autopep8", "black" },
 				-- Use a sub-list to run only the first available formatter
-				javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
-				javascriptreact = { { "prettierd", "prettier" } },
-				typescriptreact = { { "prettierd", "prettier" } },
+				javascript = { "prettierd", "prettier" },
+				typescript = { "prettierd", "prettier" },
+				javascriptreact = { "prettierd", "prettier" },
+				typescriptreact = { "prettierd", "prettier" },
 				c = { "clang-format" },
 				cpp = { "clang-format" },
 				zig = { "zigfmt" },
@@ -165,7 +164,7 @@ return {
 			{
 				"<leader>lf",
 				function()
-					require("conform").format({ async = true, lsp_fallback = true })
+					require("conform").format({ async = true, lsp_format = "fallback" })
 				end,
 				mode = "",
 				desc = "Format buffer",
