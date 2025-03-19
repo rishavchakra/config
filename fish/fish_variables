@@ -2,7 +2,6 @@
 # VERSION: 3.0
 SETUVAR --export --path CPATH:/opt/homebrew/include\x1e/usr/local/include\x1e/opt/homebrew/lib\x1e/usr/local/lib/
 SETUVAR --export EDITOR:nvim
-SETUVAR --export LG_CONFIG_FILE:/home/rishavc/.config/lazygit/config.yml
 SETUVAR --export --path LIBRARY_PATH:/opt/homebrew/lib
 SETUVAR --export --path PICO_SDK_PATH:/Users/rishavc/Apps/pico\x2dsdk/
 SETUVAR --export PYENV_ROOT:/Users/rishavc/\x2epyenv
@@ -41,4 +40,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:cyan\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/Users/rishavc/Documents/Dartmouth/Security/PS3/AFLplusplus\x1e/Users/rishavc/\x2epyenv/bin\x1e/opt/homebrew/bin\x1e/Users/rishavc/\x2ecargo/bin\x1e/Users/rishavc/\x2elocal/bin\x1e/opt/homebrew/opt/llvm/bin\x1e/opt/homebrew/opt/texinfo/bin\x1e/Users/rishavc/Apps/zig\x2d0\x2e11\x1e/Users/rishavc/Apps/zig\x2d0\x2e12
+SETUVAR fish_user_paths:/Users/rishavc/Documents/Dartmouth/Security/PS3/AFLplusplus\x1e/Users/rishavc/\x2epyenv/bin\x1e/opt/homebrew/bin\x1e/Users/rishavc/\x2ecargo/bin\x1e/Users/rishavc/\x2elocal/bin\x1e/opt/homebrew/opt/llvm/bin\x1e/opt/homebrew/opt/texinfo/bin\x1e/Users/rishavc/Apps/zig\x2d0\x2e11\x1e/Users/rishavc/Apps/zig\x2d0\x2e12\x1e/Users/rishavc/\x2enodebrew/current/bin

@@ -7,7 +7,7 @@ if status is-interactive
     macchina
 end
 
-alias v 'nvim'
+alias v nvim
 
 alias ls 'eza --icons'
 # alias neofetch 'neofetch | lolcat'
@@ -17,36 +17,30 @@ alias tmux-kill 'tmux kill-session'
 
 alias lg lazygit
 
-alias p 'pnpm'
+alias p pnpm
 
-alias please 'sudo'
+alias please sudo
 
 # source ~/.config/fish/kanagawa.fish
 
-set -Ux LIBRARY_PATH '/opt/homebrew/lib'
+set -Ux LIBRARY_PATH /opt/homebrew/lib
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval /opt/homebrew/Caskroom/miniforge/base/bin/conda "shell.fish" "hook" $argv | source
+eval /opt/homebrew/Caskroom/miniforge/base/bin/conda "shell.fish" hook $argv | source
 # <<< conda initialize <<<
 
-starship init fish | source
-
-zoxide init fish | source
-
-macchina
-
 # pnpm
-set -gx PNPM_HOME "/Users/rishavc/Library/pnpm"
+set -gx PNPM_HOME /Users/rishavc/Library/pnpm
 set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
 
 # opam configuration
-source /Users/rishavc/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+source /Users/rishavc/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
 
-set -gx AFL_PATH "/Users/rishavc/Documents/Dartmouth/Security/PS3/AFLplusplus"
+set -gx AFL_PATH /Users/rishavc/Documents/Dartmouth/Security/PS3/AFLplusplus
 
 # Node Version Manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && \. "/usr/local/opt/nvm/etc/bash_completion"
+[ -s /usr/local/opt/nvm/etc/bash_completion ] && \. /usr/local/opt/nvm/etc/bash_completion
