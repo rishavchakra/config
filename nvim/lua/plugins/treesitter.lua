@@ -7,7 +7,6 @@ return {
         event = { 'BufReadPost', 'BufNewFile' },
         dependencies = {
             'nvim-treesitter/nvim-treesitter-textobjects',
-            'windwp/nvim-ts-autotag'
         },
         opts = {
             highlight = {

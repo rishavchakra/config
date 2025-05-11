@@ -41,13 +41,6 @@ return {
 		},
 	},
 	{
-		"numToStr/Comment.nvim",
-		event = "VeryLazy",
-		opts = {
-			ignore = "^$",
-		},
-	},
-	{
 		"nvim-pack/nvim-spectre",
 		dependencies = "nvim-lua/plenary.nvim",
 		event = "VeryLazy",

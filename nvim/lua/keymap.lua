@@ -12,8 +12,8 @@ map.set("n", "<leader>s", ":w<CR>")
 map.set("n", "<leader>q", ":x")
 
 -- Buffers
--- map.set('n', '<Tab>', ':bn<CR>', silence)
--- map.set('n', '<S-Tab>', ':bp<CR>', silence)
+map.set('n', '<Tab>', ':bn<CR>', silence)
+map.set('n', '<S-Tab>', ':bp<CR>', silence)
 -- map.set("n", "<leader>x", "<cmd>b#|bd#<cr>", silence)
 map.set("n", "<leader>x", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", silence)
 map.set("n", "<leader>X", "<cmd>bp<bar>vsp<bar>bn<bar>bd<cr>", silence)

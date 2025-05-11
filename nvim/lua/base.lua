@@ -16,11 +16,13 @@ vim.opt.wrap = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.backspace = 'start,eol,indent'
+vim.opt.guicursor = 'n-v:block,i-c-ci:hor30,o-r:hor50'
 vim.opt.path:append { '**' }
 vim.opt.wildignore:append { '*/node_modules/*' }
 vim.opt.showmode = false
 vim.opt.laststatus = 3
 vim.opt.conceallevel = 2
+vim.opt.cmdheight = 0
 
 -- Change back to bash if it's slow
 vim.opt.shell = 'fish'
