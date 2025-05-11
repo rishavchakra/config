@@ -22,6 +22,40 @@ return {
 				lazygit = {
 					theme_path = svim.fs.normalize(os.getenv('XDG_CONFIG_HOME') .. '/lazygit/config.yml')
 				},
+				dashboard = {
+					preset = {
+						--@format: disable
+						header = [[
+----------.,ldddl;.--------------------------
+--------.:OXX0MxNOo;.------------------------
+-------.lXNO,,,,,;kc.------------------------
+---...cokX0;,,,,,;Oo,------------------------
+----.;dkk0KOo;,,;kKKd'------------...--------
+-----.';ckXWN0kk0XNX0xo:.....',;oOOko.-------
+-------.':dOXXXXNWMMWNNNKKKXXXNNNWKl.--------
+--------.;xKXKXMMMMMMMMMWNNXXNNKdcl;.--------
+--------.dXWNNWMMMMMMMMMMNKKXNN0,------------
+--------'kXNWWMMMMMMMMMMMMWNNX0o.------------
+-------.c0WMMMWWWWWWNWWMMMWXXX0xol;..--------
+-----.:kNMMMMWNKXNNNXXNNNXXNWWMMMWNKOdc.-----
+----.dNWWMWKddOXNK0XWNXKXWMMWNNWWWWWWNXOc;::'
+-.;d0NWNXk:.-.:0XK00K00XMMMMMNKkocokXXXWNXXKk
+'kXNNWNXKl.----.';oxdddOXWMMMMWNO:..';lONNX0c
+-,dk0Ko,;,---------...-.'cxKXNWWWKdc,.-.;oo,
+---..'.--------------------.:d0NNXKXXx.------
+------------------------------'dXNXNN0;------
+-------------------------------.;ok0Kx'------
+----------------------------------....-------]]
+						--@format: enable
+					},
+					sections = {
+						{ section = "header" },
+						{ icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
+						{ icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+						{ icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+						{ section = "startup" },
+					},
+				}
 			}
 		end,
 		keys = {
