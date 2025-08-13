@@ -2,7 +2,8 @@
 name="rust"
 file-types=["rs"]
 indent={ tab-width=4, unit=" " }
-auto-format=true
+formatter={ command="cargo fmt" }
+auto-format=false
 
 [[language]]
 name="typescript"
@@ -15,3 +16,23 @@ name="javascript"
 file-types=["js", "jsx"]
 indent={ tab-width=2, unit=" " }
 auto-format=true
+
+[[language]]
+name="c"
+file-types=["c", "h"]
+indent={ tab-width=2, unit=" " }
+
+[[language]]
+name="cpp"
+file-types=["cpp", "cxx", "cc", "hpp", "hh"]
+indent={ tab-width=2, unit=" " }
+
+[[language]]
+name="markdown"
+language-servers = ["marksman", "markdown-oxide"]
+file-types = ["md", "txt"]
+scope = "text.markdown"
+roots = []
+
+[language-server.ltex]
+command = "/opt/homebrew/bin/ltex-ls"

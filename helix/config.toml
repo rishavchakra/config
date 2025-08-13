@@ -35,7 +35,7 @@ tab = "all"
 newline = "none"
 
 [keys.normal]
-"space" = { s = ":w", q = {"ret" = ":x"}}
+"space" = { s = ":w", x = ":bc", q = {"ret" = ":x"}}
 "ret" = ["move_line_down", "goto_first_nonwhitespace"]
 X = "extend_line_above"
 D = "delete_char_backward"

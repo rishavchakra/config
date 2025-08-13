@@ -18,8 +18,13 @@ alias lg lazygit
 
 alias p pnpm
 
-alias pls sudo
-alias please sudo
+function pls
+	if test "$argv" = !
+		eval command sudo $history[1]
+	else
+		command sudo $argv
+	end
+end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -27,6 +32,6 @@ alias please sudo
 # <<< conda initialize <<<
 
 # Node Version Manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
-[ -s /usr/local/opt/nvm/etc/bash_completion ] && \. /usr/local/opt/nvm/etc/bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
+# [ -s /usr/local/opt/nvm/etc/bash_completion ] && \. /usr/local/opt/nvm/etc/bash_completion

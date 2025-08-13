@@ -4,6 +4,7 @@ theme = Kanagawa Wave
 # theme = catppuccin-mocha
 # font-family = Rec Mono Semicasual
 font-family = Iosevka
+font-size = 14.5
 
 mouse-hide-while-typing = true
 fullscreen = true

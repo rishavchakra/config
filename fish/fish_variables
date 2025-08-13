@@ -6,7 +6,7 @@ SETUVAR --export --path LIBRARY_PATH:/opt/homebrew/lib
 SETUVAR --export --path PICO_SDK_PATH:/Users/rishavc/Apps/pico\x2dsdk/
 SETUVAR --export PYENV_ROOT:/Users/rishavc/\x2epyenv
 SETUVAR --export XDG_CONFIG_HOME:/Users/rishavc/\x2econfig
-SETUVAR __fish_initialized:3400
+SETUVAR __fish_initialized:3800
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:\x7e/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_list\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e\x7e/\x2econfig/fish/functions/nvm\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e\x7e/\x2econfig/fish/completions/nvm\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/nvm\x2efish\x1ejorgebucaran/fisher
@@ -40,4 +40,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:cyan\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/Users/rishavc/Documents/Dartmouth/Security/PS3/AFLplusplus\x1e/Users/rishavc/\x2epyenv/bin\x1e/opt/homebrew/bin\x1e/Users/rishavc/\x2ecargo/bin\x1e/Users/rishavc/\x2elocal/bin\x1e/opt/homebrew/opt/llvm/bin\x1e/opt/homebrew/opt/texinfo/bin\x1e/Users/rishavc/Apps/zig\x2d0\x2e11\x1e/Users/rishavc/Apps/zig\x2d0\x2e12\x1e/Users/rishavc/\x2enodebrew/current/bin
+SETUVAR fish_user_paths:/Users/rishavc/\x2elocal/bin\x1e/opt/homebrew/bin\x1e/Users/rishavc/\x2ecargo/bin\x1e/opt/homebrew/opt/llvm/bin\x1e/opt/homebrew/opt/texinfo/bin\x1e/Users/rishavc/\x2enodebrew/current/bin\x1e/Users/rishavc/\x2elocal/share\x1e/Users/rishavc/\x2eradicle/bin\x1e/Users/rishavc/Library/pnpm

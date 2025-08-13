@@ -46,12 +46,13 @@ map cmd+[ previous_window
 #:     bold_italic_font Operator Mono Medium Italic
 
 # font_family FiraCode NF
-font_family CaskaydiaCove Nerd Font
+# font_family CaskaydiaCove Nerd Font
 # font_family FiraCode Nerd Font Mono
 # font_family Rec Mono Casual
+font_family Rec Mono Semicasual
 # font_family Iosevka Nerd Font
-font_size 13
-adjust_line_height 125%
+font_size 12
+adjust_line_height 115%
 
 #: Font size (in pts)
 
@@ -813,7 +814,7 @@ layout tall
 #: insensitive, from the set [0-9A-Z]. Specify your preference as a
 #: string of characters.
 
-confirm_os_window_close 1
+confirm_os_window_close -1
 
 #: Ask for confirmation when closing an OS window or a Tab with at
 #: least this number of kitty windows in it by window manager (e.g.
@@ -1346,7 +1347,7 @@ macos_quit_when_last_window_closed yes
 #: resizable on macOS. Changing this setting by reloading the config
 #: will only affect newly created windows.
 
-# macos_thicken_font 0
+# macos_thicken_font 0.75
 
 #: Draw an extra border around the font with the given width, to
 #: increase legibility at small font sizes. For example, a value of

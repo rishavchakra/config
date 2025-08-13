@@ -14,8 +14,8 @@ config.font = wezterm.font_with_fallback({
 	"Rec Mono Semicasual",
 	"Fira Code",
 })
-config.line_height = 1.2
 config.font_size = 12
+config.line_height = (config.font_size + 2) / config.font_size
 config.use_dead_keys = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
