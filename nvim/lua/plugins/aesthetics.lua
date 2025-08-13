@@ -1,10 +1,21 @@
 return {
 	{
+		'rebelot/kanagawa.nvim',
+		priority = 1001,
+		lazy = false,
+		event = 'VimEnter',
+		init = function()
+			vim.cmd('colorscheme kanagawa')
+		end
+	},
+	{
 		'folke/snacks.nvim',
 		dependencies = {
 			'rebelot/kanagawa.nvim'
 		},
-		event = 'VeryLazy',
+		event = 'VimEnter',
+		lazy = false,
+		priority = 1000,
 		opts = function()
 			local colors = require('kanagawa.colors').setup()
 			local palette_colors = colors.palette
@@ -60,8 +71,8 @@ return {
 		end,
 		keys = {
 			-- Top Pickers & Explorer
-			{ "<leader><space>", function() Snacks.picker.smart() end,                                   desc = "Smart Find Files" },
-			{ "<leader>ff",      function() Snacks.picker.files() end,                                   desc = "Smart Find Files" },
+			{ "<leader><space>", function() Snacks.picker.files() end,                                   desc = "Find Files" },
+			{ "<leader>ff",      function() Snacks.picker.smart() end,                                   desc = "Smart Find Files" },
 			{ "<leader>,",       function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
 			{ "<leader>/",       function() Snacks.picker.grep() end,                                    desc = "Grep" },
 			{ "<leader>:",       function() Snacks.picker.command_history() end,                         desc = "Command History" },
@@ -164,7 +175,7 @@ return {
 		keys = {
 			{
 				"<leader>fe",
-				"<cmd>Yazi cwd<cr>",
+				"<cmd>Yazi<cr>",
 				desc = "Open yazi at the current file",
 				noremap = true,
 				silent = true,
@@ -174,6 +185,14 @@ return {
 				"<leader>E",
 				"<cmd>Yazi toggle<cr>",
 				desc = "Resume the last yazi session",
+				noremap = true,
+				silent = true,
+				nowait = true,
+			},
+			{
+				"<leader>fE",
+				"<cmd>Yazi cwd<cr>",
+				desc = "Open yazi at the project root",
 				noremap = true,
 				silent = true,
 				nowait = true,

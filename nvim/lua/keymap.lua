@@ -8,7 +8,7 @@ map.set("n", "x", '"_x') -- x doesn't yank to register
 map.set("n", "+", "<C-a>")
 map.set("n", "-", "<C-x>")
 
-map.set("n", "<leader>s", ":w<CR>")
+map.set("n", "<leader>s", ":up<CR>")
 map.set("n", "<leader>q", ":x")
 
 -- Buffers

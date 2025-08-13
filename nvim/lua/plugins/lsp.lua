@@ -13,7 +13,11 @@ return {
 		},
 		opts = {
 			servers = {
+				ast_grep = {},
+				clangd = {},
+				csharp_ls = {},
 				lua_ls = {},
+				ruff = {},
 				rust_analyzer = {
 					settings = {
 						['rust-analyzer'] = {
@@ -52,6 +56,10 @@ return {
 						}
 					}
 				},
+				taplo = {},
+				texlab = {},
+				ts_ls = {},
+				tsserver = {},
 				zls = {
 					settings = {
 						zls = {
@@ -81,53 +89,19 @@ return {
 			'neovim/nvim-lspconfig',
 		},
 	},
-	-- {
-	-- 	"neovim/nvim-lspconfig",
-	-- 	event = { "BufReadPre", "BufNewFile" },
-	-- 	config = function()
-	-- 		vim.lsp.config('*', {
-	-- 			capabilities = {
-	-- 				textDocument = {
-	-- 					semanticTokens = {
-	-- 						multilineTokenSupport = true,
-	-- 					},
-	-- 				},
-	-- 			},
-	-- 		})
-	--
-	-- 		vim.lsp.enable('asm-lsp')
-	-- 		vim.lsp.enable('ast-grep')
-	-- 		vim.lsp.enable('autoflake')
-	-- 		vim.lsp.enable('autopep8')
-	-- 		vim.lsp.enable('bibtex-tidy')
-	-- 		vim.lsp.enable('clang-format')
-	-- 		vim.lsp.enable('clangd')
-	-- 		vim.lsp.enable('cmake-language-server')
-	-- 		vim.lsp.enable('cpplint')
-	-- 		vim.lsp.enable('docformatter')
-	-- 		vim.lsp.enable('dotenv-linter')
-	-- 		vim.lsp.enable('lua-language-server')
-	-- 		vim.lsp.enable('flake8')
-	-- 		vim.lsp.enable('gopls')
-	-- 		vim.lsp.enable('json-lsp')
-	-- 		vim.lsp.enable('just-lsp')
-	-- 		vim.lsp.enable('ocaml-lsp')
-	-- 		vim.lsp.enable('ruff')
-	-- 		vim.lsp.enable('rust-analyzer')
-	-- 		vim.lsp.enable('svls')
-	-- 		vim.lsp.enable('systemd-language-server')
-	-- 		vim.lsp.enable('taplo')
-	-- 		vim.lsp.enable('texlab')
-	-- 		vim.lsp.enable('typescript-language-server')
-	-- 		vim.lsp.enable('wgsl_analyzer')
-	--
-	-- 	end
-	-- },
 	{
 		'nvimtools/none-ls.nvim',
 	},
-	-- {
-	-- 	'ray-x/lsp_signature.nvim',
-	-- 	event = 'InsertEnter',
-	-- },
+	{
+		'lervag/vimtex',
+		lazy = false,
+		ft = "tex",
+		-- tag = "v2.15", -- uncomment to pin to a specific release
+		init = function()
+			-- VimTeX configuration goes here, e.g.
+			vim.g.vimtex_view_method = "skim"
+			vim.g.vimtex_view_skim_sync = 1
+			vim.g.vimtex_view_skim_activate = 1
+		end,
+	},
 }

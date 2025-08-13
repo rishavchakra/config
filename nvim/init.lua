@@ -18,7 +18,6 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup plugins
 require("lazy").setup("plugins", {
 	defaults = { lazy = true },
-	install = { colorscheme = { "kanagawa" } },
 	checker = { enabled = true },
 	change_detection = {
 		notify = false,
@@ -40,14 +39,14 @@ require("lazy").setup("plugins", {
 })
 
 -- vim.o.background = ''
-vim.cmd("colorscheme kanagawa")
-vim.cmd [[highlight IndentLineKanagawa guibg=#16161d gui=nocombine]]
+-- vim.cmd("colorscheme kanagawa")
+-- vim.cmd [[highlight IndentLineKanagawa guibg=#16161d gui=nocombine]]
 -- vim.cmd [[highlight IndentLineCatppuccin guibg=#181825 gui=nocombine]]
-local highlight = {
-	"Whitespace",
-	"IndentLineKanagawa",
-	-- "#16161d",
-	-- "Gutter",
-	-- "WinSeparator",
-	-- "CursorColumn",
-}
+-- local highlight = {
+-- 	"Whitespace",
+-- 	"IndentLineKanagawa",
+-- 	-- "#16161d",
+-- 	-- "Gutter",
+-- 	-- "WinSeparator",
+-- 	-- "CursorColumn",
+-- }
