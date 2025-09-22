@@ -1,7 +1,6 @@
 vim.g.mapleader = ' '
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.wrap = false
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.swapfile = false
@@ -24,7 +23,10 @@ vim.o.list = true
 vim.o.lcs = 'tab:> ,lead:·,trail:·,multispace:·'
 vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.o.foldlevelstart = 1
+vim.o.foldlevelstart = -1
+vim.o.foldlevel = 99
+vim.o.foldtext = ""
+vim.o.foldnestmax = 3
 vim.o.cursorline = true
 
 -- Disable NetRW
@@ -33,12 +35,14 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.pack.add({
     { src = 'https://github.com/neovim/nvim-lspconfig' },
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' },
     { src = 'https://github.com/rebelot/kanagawa.nvim' },
     { src = 'https://github.com/stevearc/oil.nvim' },
     { src = 'https://github.com/nvim-lualine/lualine.nvim' },
     { src = 'https://github.com/lewis6991/gitsigns.nvim' },
     { src = 'https://github.com/kylechui/nvim-surround' },
     { src = 'https://github.com/tpope/vim-fugitive' },
+    { src = 'https://github.com/lervag/vimtex' },
 
     { src = 'https://github.com/echasnovski/mini.ai' },
     { src = 'https://github.com/echasnovski/mini.align' },
@@ -47,33 +51,6 @@ vim.pack.add({
     { src = 'https://github.com/echasnovski/mini.pairs' },
     { src = 'https://github.com/echasnovski/mini.pick' },
     { src = 'https://github.com/echasnovski/mini.splitjoin' },
-})
-
-vim.lsp.enable({
-    'clangd',
-    'cmake',
-    'lua_ls',
-    'marksman',
-    'mesonlsp',
-    'texlab',
-    'tinymist',
-    'ruff_lsp',
-    'rust_analyzer',
-    'texlab',
-    'zls',
-})
-
-vim.lsp.config('lua_ls', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            },
-            workspace = {
-                library = vim.api.nvim_get_runtime_file("", true)
-            }
-        }
-    }
 })
 
 require 'mini.ai'.setup()
@@ -113,17 +90,113 @@ require 'lualine'.setup({
     }
 })
 require 'gitsigns'.setup()
+-- require 'blink.cmp'.setup({
+--     keymap = { preset = 'default' }, -- Other options are super-tab, enter, none
+--     appearance = { nerd_font_variant = 'mono' },
+--     completion = { documentation = { auto_show = false } },
+--     sources = {
+--         default = { 'lsp', 'path', 'snippets', 'buffer' }
+--     }
+-- })
+vim.g.vimtex_view_method = 'skim'
+vim.g.vimtex_view_skim_sync = 1
+vim.g.vimtex_view_skim_activate = 1
 
--- LSP Autocomplete
+vim.lsp.enable({
+    'clangd',
+    'cmake',
+    'lua_ls',
+    'marksman',
+    'mesonlsp',
+    'texlab',
+    'tinymist',
+    'ruff_lsp',
+    'rust_analyzer',
+    'texlab',
+    'zls',
+})
+
+vim.lsp.config('*', {
+    root_markers = { '.git', '.hg' },
+    capabilities = {
+        textDocument = {
+            semanticTokens = {
+                multilineTokenSupport = true,
+            },
+            -- completion = {
+            -- completionItem = {
+            --     snippetSupport = true,
+            -- }
+            -- }
+        },
+    },
+})
+vim.lsp.config('lua_ls', {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true)
+            }
+        }
+    }
+})
+
+-- LSP Functionality
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if client and client:supports_method('textDocument/completion') then
+        local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+        if client:supports_method('textDocument/implementation') then
+            -- keymap for vim.lsp.buf.implementation
+        end
+        if client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
             vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+        end
+        if client:supports_method('textDocument/foldingRange') then
+            local win = vim.api.nvim_get_current_win()
+            vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+        end
+        if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+            local ran_once = false
+            vim.lsp.handlers['experimental/serverStatus'] = function(_, result, ctx, _)
+                if result.quiescent and not ran_once then
+                    vim.lsp.inlay_hint.enable(false, nil)
+                    vim.lsp.inlay_hint.enable(true, nil)
+                    vim.lsp.handlers['experimental/serverStatus'] = nil
+                    ran_once = true
+                end
+            end
+            vim.keymap.set('n', '<leader>zh', function()
+                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = ev.buf }))
+            end)
+        end
+        if not client:supports_method('textDocument/willSaveWaitUntil')
+            and client:supports_method('textDocument/formatting') then
+            vim.api.nvim_create_autocmd('BufWritePre', {
+                group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+                buffer = ev.buf,
+                callback = function()
+                    vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
+                end
+            })
         end
     end
 })
 vim.cmd('set completeopt+=noselect')
+-- local capabilities = {
+--     textDocument = {
+--         foldingRange = {
+--             dynamicRegistration = false,
+--             lineFoldingOnly = true,
+--         },
+--         semanticTokens = {
+--             multilineTokenSupport = true,
+--         },
+--     }
+-- }
+-- require 'blink.cmp'.get_lsp_capabilities()
 
 -- Base keymaps
 vim.keymap.set('n', '<leader>s', ':update<CR>')
@@ -154,6 +227,6 @@ vim.keymap.set('n', '<leader>gR', require('gitsigns').reset_buffer)
 vim.keymap.set('n', '<leader>gd', require('gitsigns').diffthis)
 vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk)
 vim.keymap.set('n', '<leader>gP', require('gitsigns').preview_hunk_inline)
-vim.keymap.set({'o', 'x'}, 'ih', require('gitsigns').select_hunk)
+vim.keymap.set({ 'o', 'x' }, 'ih', require('gitsigns').select_hunk)
 
 vim.cmd('colorscheme kanagawa')
