@@ -44,6 +44,18 @@ vim.pack.add({
     { src = 'https://github.com/tpope/vim-fugitive' },
     { src = 'https://github.com/lervag/vimtex' },
 
+    -- Completion and Snippets
+    { src = 'https://github.com/rafamadriz/friendly-snippets' },
+    { src = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
+    { src = 'https://github.com/hrsh7th/cmp-buffer' },
+    { src = 'https://github.com/hrsh7th/cmp-path' },
+    { src = 'https://github.com/hrsh7th/cmp-cmdline' },
+    { src = 'https://github.com/hrsh7th/nvim-cmp' },
+    { src = 'https://github.com/L3MON4D3/LuaSnip' },
+    { src = 'https://github.com/saadparwaiz1/cmp_luasnip' },
+    { src = 'https://github.com/micangl/cmp-vimtex' },
+    { src = 'https://github.com/onsails/lspkind.nvim' },
+
     { src = 'https://github.com/echasnovski/mini.ai' },
     { src = 'https://github.com/echasnovski/mini.align' },
     { src = 'https://github.com/echasnovski/mini.bracketed' },
@@ -90,14 +102,52 @@ require 'lualine'.setup({
     }
 })
 require 'gitsigns'.setup()
--- require 'blink.cmp'.setup({
---     keymap = { preset = 'default' }, -- Other options are super-tab, enter, none
---     appearance = { nerd_font_variant = 'mono' },
---     completion = { documentation = { auto_show = false } },
---     sources = {
---         default = { 'lsp', 'path', 'snippets', 'buffer' }
---     }
--- })
+require 'luasnip.loaders.from_vscode'.load()
+require 'cmp'.setup({
+    enabled = function()
+        local disabled = vim.api.nvim_get_option_value('buftype', { buf = 0 }) == 'prompt'
+        disabled = disabled or (vim.fn.reg_recording() ~= '')
+        disabled = disabled or (vim.fn.reg_executing() ~= '')
+        disabled = disabled or require('cmp.config.context').in_treesitter_capture('comment')
+        return not disabled
+    end,
+    expand = function(args)
+        require 'luasnip'.lsp_expand(args.body)
+    end,
+    formatting = {
+        fields = { "kind", "abbr" },
+        format = function(entry, vim_item)
+            local kind = require 'lspkind'.cmp_format({ mode = 'symbol_text', maxwidth = 50 })(entry, vim_item)
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            kind.kind = " " .. (strings[1] or "") .. " "
+            return kind
+        end
+    },
+    mapping = require 'cmp'.mapping.preset.insert(),
+    sources = require 'cmp'.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+        { name = 'buffer' },
+        { name = 'vimtex' },
+    }),
+    view = {
+        entries = { name = 'custom', selection_order = 'near_cursor' }
+    },
+    window = {
+        completion = {
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            col_offset = -3,
+            side_padding = 0,
+        },
+    },
+})
+require 'cmp'.setup.cmdline({ '/', '?' }, {
+    mapping = require 'cmp'.mapping.preset.cmdline(),
+    sources = {
+        { name = 'buffer' }
+    }
+})
+
 vim.g.vimtex_view_method = 'skim'
 vim.g.vimtex_view_skim_sync = 1
 vim.g.vimtex_view_skim_activate = 1
@@ -116,20 +166,10 @@ vim.lsp.enable({
     'zls',
 })
 
+local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
 vim.lsp.config('*', {
     root_markers = { '.git', '.hg' },
-    capabilities = {
-        textDocument = {
-            semanticTokens = {
-                multilineTokenSupport = true,
-            },
-            -- completion = {
-            -- completionItem = {
-            --     snippetSupport = true,
-            -- }
-            -- }
-        },
-    },
+    capabilities = capabilities,
 })
 vim.lsp.config('lua_ls', {
     settings = {
@@ -151,9 +191,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
         if client:supports_method('textDocument/implementation') then
             -- keymap for vim.lsp.buf.implementation
         end
-        if client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
-            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-        end
+        -- if client:supports_method(vim.lsp.protocol.Methods.textDocument_completion) then
+        --     vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+        -- end
         if client:supports_method('textDocument/foldingRange') then
             local win = vim.api.nvim_get_current_win()
             vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
@@ -184,19 +224,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
     end
 })
-vim.cmd('set completeopt+=noselect')
--- local capabilities = {
---     textDocument = {
---         foldingRange = {
---             dynamicRegistration = false,
---             lineFoldingOnly = true,
---         },
---         semanticTokens = {
---             multilineTokenSupport = true,
---         },
---     }
--- }
--- require 'blink.cmp'.get_lsp_capabilities()
+-- vim.cmd('set completeopt+=noselect')
 
 -- Base keymaps
 vim.keymap.set('n', '<leader>s', ':update<CR>')
