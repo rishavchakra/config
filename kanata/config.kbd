@@ -1,31 +1,37 @@
 (defcfg
-    process-unmapped-keys yes
+	process-unmapped-keys yes
+	movemouse-smooth-diagonals yes
 )
 
 (defsrc
-	1	2	3	4	5	6	7	8	9	0	-	=	bspc
+	`	1	2	3	4	5	6	7	8	9	0	-	=	bspc
 	tab	q	w	e	r	t	y	u	i	o	p	[	]	\
-	caps	a	s	d	f	g	h	j	k	l	;	'	ret
-	lsft	z	x	c	v	b	n	m	,	.	/	rsft
-	lctl	lmet	lalt			spc			ralt	rmet	rctl
+	⇪	a	s	d	f	g	h	j	k	l	;	'	ret
+	sft	z	x	c	v	b	n	m	,	.	/	rsft		▲
+	lctl	met	lalt		spc		rmet	ralt	⌃›	◀	▼	▶
 )
 
 (deflayer default
-	1	2	3	4	5	6	7	8	9	0	-	=	bspc
-	tab	q	w	e	r	t	y	u	i	o	p	[	]	\
-	caps	a	s	d	f	g	h	j	k	l	;	'	ret
-	lsft	z	x	c	v	b	n	m	,	.	/	rsft
-	lctl	lmet	@alt			spc			rctl	rmet	rctl
+	`	1	2	3	4	5	6	7	8	9	0	-	=	bspc
+	tab	q	w	f	p	b	j	l	u	y	;	[	]	\
+	bks	a	r	s	t	g	m	n	e	i	o	'	ret
+	sft	x	c	d	v	z	k	h	,	.	/	rsft	▲
+	lctl	met	@alt		spc		⌃›	ralt	⌃›	◀	▼	▶
 )
 
 (deflayer numsarrows
-	_	_	_	_	_	_	_	_	_	_	_	_	_
-	_	_	_	up	_	_	_	7	8	9	_	_	_	_
-	esc	_	left	down	rght	_	_	4	5	6	_	_	_
-	_	_	_	_	_	_	0	1	2	3	_	_
-	_	_	_			_			_	_	_
+	lrld	_	_	_	_	_	_	_	_	_	_	_	_	_
+	_	_	⇟	▲	⇞	_	_	7	8	9	-	_	_	_
+	@bk	_	◀	▼	▶	_	_	4	5	6	+	_	_
+	_	_	bck	_	fwd	_	0	1	2	3	.	_	@au
+	_	_	_			_			_	_	_	@al	@ad	@ar
 )
 
 (defalias
-      alt   (tap-hold-press 200 200 esc (layer-toggle numsarrows))
+	alt	(tap-hold-press 200 200 esc (layer-toggle numsarrows))
+	bk A-bspc
+	au A-▲
+	ad A-▼
+	al A-◀
+	ar A-▶
 )
