@@ -48,6 +48,9 @@ path+=("$HOME/.local/bin")
 
 eval "$(zoxide init zsh)" 2> /dev/null
 
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
+
 macchina 2> /dev/null
 
 PATH="/home/rishavc/perl5/bin${PATH:+:${PATH}}"; export PATH;
