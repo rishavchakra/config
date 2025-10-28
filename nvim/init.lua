@@ -12,7 +12,7 @@ vim.o.termguicolors = true
 vim.o.hlsearch = true
 vim.o.smartcase = true
 vim.o.scrolloff = 2
-vim.o.shell = 'fish'
+vim.o.shell = 'zsh'
 vim.o.guicursor = 'n-v:block,i-c-ci:hor50,o-r:hor50'
 vim.o.conceallevel = 2
 vim.o.autoindent = true
@@ -160,7 +160,7 @@ vim.lsp.enable({
     'mesonlsp',
     'texlab',
     'tinymist',
-    'ruff_lsp',
+    'ruff',
     'rust_analyzer',
     'texlab',
     'zls',
@@ -258,3 +258,7 @@ vim.keymap.set('n', '<leader>gP', require('gitsigns').preview_hunk_inline)
 vim.keymap.set({ 'o', 'x' }, 'ih', require('gitsigns').select_hunk)
 
 vim.cmd('colorscheme kanagawa')
+
+-- Inherit Transparency from Ghostty
+vim.cmd('hi Normal ctermbg=NONE guibg=NONE')
+vim.cmd('hi NonText ctermbg=NONE guibg=NONE')
