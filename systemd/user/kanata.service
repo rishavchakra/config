@@ -7,8 +7,8 @@ Environment=PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin
 Environment=DISPLAY=:0
 Environment=HOME=/home/rishavc/
 Type=simple
-ExecStart=/usr/bin/kanata --cfg /home/rishavc/.config/kanata/config.kbd
-Restart=never
+ExecStart=/home/rishavc/.cargo/bin/kanata --cfg /home/rishavc/.config/kanata/config.kbd
+Restart=no
 
 [Install]
 WantedBy=default.target
