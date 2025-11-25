@@ -36,8 +36,8 @@ alias lg='lazygit'
 alias t-go='tmux attach -t'
 alias t-kill='tmux kill-session'
 
-export SHELL="/usr/bin/zsh"
-export EDITOR="/usr/bin/nvim"
+export SHELL="/bin/zsh"
+export EDITOR="$HOME/.local/bin/nvim"
 export PAGER="/usr/bin/less"
 export LESSHISTFILE="/dev/null"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -48,8 +48,8 @@ path+=("$HOME/.local/bin")
 
 eval "$(zoxide init zsh 2> /dev/null)" 2> /dev/null
 
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
+source /opt/homebrew/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
 
 macchina 2> /dev/null
 
