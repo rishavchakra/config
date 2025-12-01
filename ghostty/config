@@ -1,14 +1,21 @@
-# theme = Everforest Dark - Hard
 theme = Kanagawa Wave
-# theme = GruvboxDark
-# theme = catppuccin-mocha
-# font-family = Rec Mono Semicasual
-font-family = Iosevka
-font-size = 14.5
+font-family = Iosevka Slab
+font-family = Symbols Nerd Font
+font-feature = +calt +liga +dlig
+font-size = 15
+
+scrollback-limit = 20000000
+
+background-opacity = 0.9
+unfocused-split-opacity = 0.6
 
 mouse-hide-while-typing = true
-fullscreen = true
+cursor-style = block
+cursor-style-blink = false
+# fullscreen = true
 macos-icon = custom-style
 macos-icon-frame = chrome
+
+shell-integration-features = ssh-env, no-cursor
 
 quit-after-last-window-closed = true
