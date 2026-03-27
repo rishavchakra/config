@@ -39,6 +39,7 @@ vim.pack.add({
     { src = 'https://github.com/rebelot/kanagawa.nvim' },
     { src = 'https://github.com/stevearc/oil.nvim' },
     { src = 'https://github.com/nvim-lualine/lualine.nvim' },
+    { src = 'https://github.com/lukas-reineke/indent-blankline.nvim' },
     { src = 'https://github.com/lewis6991/gitsigns.nvim' },
     { src = 'https://github.com/kylechui/nvim-surround' },
     { src = 'https://github.com/tpope/vim-fugitive' },
@@ -102,6 +103,17 @@ require 'lualine'.setup({
     }
 })
 require 'gitsigns'.setup()
+require 'ibl'.setup({
+    indent = {
+        highlight = { "Whitespace", "StatusLineNC" },
+        char = "",
+    },
+    whitespace = {
+        highlight = { "Whitespace", "StatusLineNC" },
+        remove_blankline_trail = false,
+    },
+    scope = { enabled = false },
+})
 require 'luasnip.loaders.from_vscode'.load()
 require 'cmp'.setup({
     enabled = function()
