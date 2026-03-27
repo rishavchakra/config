@@ -16,12 +16,16 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt hist_ignore_all_dups
+setopt histignorespace
 setopt autocd beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
 autoload -Uz colors && colors
 PS1="%B%{$fg[blue]%}[%{$fg[green]%}%n%{$fg[cyan]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%(5~|%-1~/… /%2~|%3~)%{$fg[blue]%}]%{$reset_color%}%b "
+
+PATH=/home/rishavc/.local/share/bob/nvim-bin:$PATH
+PATH=/home/rishavc/.cargo/bin:$PATH
 
 alias grep='grep --color' # Compatible with busybox, but doesn't do anything
 alias ls='ls -F -C --color'
@@ -46,7 +50,7 @@ path+=("$HOME/.local/bin")
 
 . "$HOME/.cargo/env" 2> /dev/null
 
-eval "$(zoxide init zsh 2> /dev/null)" 2> /dev/null
+# eval "$(zoxide init zsh 2> /dev/null)" 2> /dev/null
 
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
