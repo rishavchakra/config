@@ -13,10 +13,10 @@
 
 (deflayer default
 	`	1	2	3	4	5	6	7	8	9	0	-	=	bspc
-	tab	q	w	f	p	b	j	l	u	y	;	[	]	\
-	bks	a	r	s	t	g	m	n	e	i	o	'	ret
-	sft	x	c	d	v	z	k	h	,	.	/	rsft	▲
-	lctl	met	@alt		spc		⌃›	ralt	⌃›	◀	▼	▶
+	tab	q	w	e	r	t	y	u	i	o	p	[	]	\
+	⇪	a	s	d	f	g	h	j	k	l	;	'	ret
+	sft	z	x	c	v	b	n	m	,	.	/	rsft		▲
+	lctl	met	@alt		spc		⌃›	met			⌃›	◀	▼	▶
 )
 
 (deflayer numsarrows
