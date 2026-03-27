@@ -36,3 +36,6 @@ unity3d/*
 user-dirs.dirs
 user-dirs.locale
 xfce4/xfconf/xfce-perchannel-xml
+/Signal
+/librewolf/librewolf
+/zen
