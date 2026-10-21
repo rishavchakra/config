@@ -28,7 +28,7 @@ PATH=/home/rishavc/.local/share/bob/nvim-bin:$PATH
 PATH=/home/rishavc/.cargo/bin:$PATH
 
 alias grep='grep --color' # Compatible with busybox, but doesn't do anything
-alias ls='ls -F -C --color'
+alias ls='ls -F -C --color -h'
 alias diff='diff --color' # Not compatible with busybox
 alias mkdir='mkdir -p -v'
 alias rmdir='rmdir -p --ignore-fail-on-non-empty'
@@ -36,6 +36,7 @@ alias ip='ip -h -c=always' # Not compatible with busybox
 alias v='nvim'
 alias pls='sudo'
 alias lg='lazygit'
+alias p='pnpm'
 
 alias t-go='tmux attach -t'
 alias t-kill='tmux kill-session'
@@ -45,6 +46,9 @@ export EDITOR="/usr/bin/nvim"
 export PAGER="/usr/bin/less"
 export LESSHISTFILE="/dev/null"
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_PICTURES_DIR="$HOME/images"
+export LC_CTYPE="C.UTF-8"
+export BAT_THEME="gruvbox-dark"
 
 path+=("$HOME/.local/bin")
 
@@ -62,3 +66,11 @@ PERL5LIB="/home/rishavc/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5L
 PERL_LOCAL_LIB_ROOT="/home/rishavc/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/rishavc/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/rishavc/perl5"; export PERL_MM_OPT;
+
+# pnpm
+export PNPM_HOME="/home/rishavc/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

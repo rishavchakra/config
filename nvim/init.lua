@@ -33,10 +33,15 @@ vim.o.cursorline = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.cmd "filetype plugin indent on"
+
 vim.pack.add({
     { src = 'https://github.com/neovim/nvim-lspconfig' },
-    { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' },
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter',    version = 'master' },
     { src = 'https://github.com/rebelot/kanagawa.nvim' },
+    { src = 'https://github.com/ntk148v/komau.vim' },
+    { src = 'https://github.com/oskarnurm/koda.nvim' },
+    { src = 'https://github.com/ellisonleao/gruvbox.nvim' },
     { src = 'https://github.com/stevearc/oil.nvim' },
     { src = 'https://github.com/nvim-lualine/lualine.nvim' },
     { src = 'https://github.com/lukas-reineke/indent-blankline.nvim' },
@@ -44,6 +49,7 @@ vim.pack.add({
     { src = 'https://github.com/kylechui/nvim-surround' },
     { src = 'https://github.com/tpope/vim-fugitive' },
     { src = 'https://github.com/lervag/vimtex' },
+    -- { src = 'https://github.com/kiyoon/jupynium.nvim' },
 
     -- Completion and Snippets
     { src = 'https://github.com/rafamadriz/friendly-snippets' },
@@ -70,12 +76,25 @@ require 'mini.ai'.setup()
 require 'mini.align'.setup()
 require 'mini.bracketed'.setup()
 require 'mini.comment'.setup()
-require 'mini.pairs'.setup()
+require 'mini.pairs'.setup({
+    mappings = {
+        ['"'] = { action = 'close' },
+        ["'"] = { action = 'close' },
+    }
+})
 require 'mini.pick'.setup()
 require 'mini.splitjoin'.setup()
 require 'oil'.setup()
 require 'nvim-surround'.setup()
+require 'gruvbox'.setup({
+    overrides = {
+        SignColumn = { bg = "#1d2021" },
+        WinBarNC = { bg = "#1d2021" },
+        StatusLineTerm = { bg = "#1d2021" }
+    }
+})
 require 'kanagawa'.setup({
+    theme = 'dragon',
     colors = {
         theme = {
             all = {
@@ -95,6 +114,40 @@ require 'kanagawa'.setup({
         }
     end
 })
+require 'koda'.setup({
+    transparent = true,
+    theme = {
+        dark = "dark",
+        light = "glade",
+    },
+    auto = true,
+    styles = {
+        functions = { bold = true },
+        -- keywords = { italic = true },
+        comments = { italic = true },
+    },
+})
+require 'komau'.setup({
+    style = 'dark',
+    transparent = true,
+    dim_inactive = true,
+    terminal_colors = true,
+    styles = {
+        comments = { italic = true },
+        functions = { bold = true },
+    },
+    integrations = {
+        treesitter = true,
+        lsp = true,
+        telescope = true,
+        cmp = true,
+        gitsigns = true,
+        which_key = false,
+        indent_blankline = true,
+        mini = true,
+        statusline = { lualine = true },
+    },
+})
 require 'lualine'.setup({
     options = {
         globalstatus = true,
@@ -105,11 +158,11 @@ require 'lualine'.setup({
 require 'gitsigns'.setup()
 require 'ibl'.setup({
     indent = {
-        highlight = { "Whitespace", "StatusLineNC" },
+        highlight = { "Whitespace", "SignColumn" },
         char = "",
     },
     whitespace = {
-        highlight = { "Whitespace", "StatusLineNC" },
+        highlight = { "Whitespace", "SignColumn" },
         remove_blankline_trail = false,
     },
     scope = { enabled = false },
@@ -141,6 +194,7 @@ require 'cmp'.setup({
         { name = 'luasnip' },
         { name = 'buffer' },
         { name = 'vimtex' },
+        -- { name = 'jupynium' },
     }),
     view = {
         entries = { name = 'custom', selection_order = 'near_cursor' }
@@ -160,6 +214,17 @@ require 'cmp'.setup.cmdline({ '/', '?' }, {
     }
 })
 
+-- require('vim._core.ui2').enable({
+--     enable = true,
+--     msg = {
+--         targets = 'cmd',
+--         cmd = { height = 0.5 },
+--         -- dialog = { height = 0.5 },
+--         msg = { height = 0.5, timeout = 4000 },
+--         pager = { height = 0.5 },
+--     }
+-- })
+
 vim.g.vimtex_view_method = 'skim'
 vim.g.vimtex_view_skim_sync = 1
 vim.g.vimtex_view_skim_activate = 1
@@ -167,13 +232,16 @@ vim.g.vimtex_view_skim_activate = 1
 vim.lsp.enable({
     'clangd',
     'cmake',
+    -- 'html-lsp',
+    'julia-lsp',
     'lua_ls',
-    'marksman',
-    'mesonlsp',
+    -- 'mesonlsp',
+    'oxfmt',
     'texlab',
     'tinymist',
     'ruff',
     'rust_analyzer',
+    'svls',
     'texlab',
     'zls',
 })
@@ -183,6 +251,18 @@ vim.lsp.config('*', {
     root_markers = { '.git', '.hg' },
     capabilities = capabilities,
 })
+vim.lsp.config('html-lsp', {
+    cmd = { "vscode-html-language-server", "--stdio" },
+    filetypes = { "html" },
+    init_options = {
+        configurationSection = { "html", "css", "javascript" },
+        embeddedLanguages = {
+            css = true,
+            javascript = true,
+        },
+    },
+})
+vim.lsp.config('julia-lsp', {})
 vim.lsp.config('lua_ls', {
     settings = {
         Lua = {
@@ -194,6 +274,11 @@ vim.lsp.config('lua_ls', {
             }
         }
     }
+})
+vim.lsp.config('oxfmt', {})
+vim.lsp.config('svls', {
+    cmd = { 'svls' },
+    filetypes = { 'verilog', 'systemverilog' },
 })
 
 -- LSP Functionality
@@ -236,6 +321,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
     end
 })
+-- vim.api.nvim_create_autocmd("LspProgress", {
+--     callback = function(ev)
+--         vim.print(ev.data)
+--         local value = ev.data.params.value
+--         vim.api.nvim_echo({ { value.message or "done" } }, false, {
+--             id = "lsp." .. ev.data.client_id,
+--             kind = "progress",
+--             source = "vim.lsp",
+--             title = value.title,
+--             status = value.kind ~= "end" and "running" or "success",
+--             percent = value.percentage,
+--         })
+--     end,
+-- })
 -- vim.cmd('set completeopt+=noselect')
 
 -- Base keymaps
@@ -269,7 +368,7 @@ vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk)
 vim.keymap.set('n', '<leader>gP', require('gitsigns').preview_hunk_inline)
 vim.keymap.set({ 'o', 'x' }, 'ih', require('gitsigns').select_hunk)
 
-vim.cmd('colorscheme kanagawa')
+vim.cmd('colorscheme gruvbox')
 
 -- Inherit Transparency from Ghostty
 vim.cmd('hi Normal ctermbg=NONE guibg=NONE')
