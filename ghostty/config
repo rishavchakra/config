@@ -1,12 +1,12 @@
-theme = Kanagawa Wave
+theme = Kanagawa Dragon
 font-family = Iosevka Slab
 font-family = Symbols Nerd Font
 font-feature = +calt +liga +dlig
-font-size = 15
+font-size = 14
 
 scrollback-limit = 20000000
 
-background-opacity = 0.9
+background-opacity = 0.95
 unfocused-split-opacity = 0.6
 
 mouse-hide-while-typing = true
